@@ -1,0 +1,429 @@
+mixin article(title, date)
+    .callout
+        h3= title
+        h6= date
+        block
+
+mixin image(title, src)
+    .callout.text-center
+        a(href=src)
+            img(style="margin-bottom: 10px;" + attributes.style src=src)
+        h6.text-center= title
+
+doctype html
+<html class="no-js" lang="en">
+head
+    meta(charset="utf-8")
+    meta(http-equiv="x-ua-compatible" content="ie=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Keppnisforritunarfélag Íslands
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation.min.css")
+body
+    .row.column
+        .title-bar(style="padding:0")
+            .title-bar-left
+                img.title-bar-title(src="logo.png")
+
+        .row.collapse
+            .medium-3.columns
+                ul.tabs.vertical#example-vert-tabs(data-deep-link="true" data-tabs)
+                    li.tabs-title.is-active
+                        a(href="#news" aria-selected="true") Fréttir
+                    li.tabs-title
+                        a(href="#register") Félagsaðild
+                    li.tabs-title
+                        a(href="#chat") Samskiptavettvangar
+                    li.tabs-title
+                        a(href="#about") Um félagið
+
+            .medium-9.columns
+                .tabs-content.vertical(data-tabs-content="example-vert-tabs")
+
+                    .tabs-panel.is-active#news
+
+                        +article('Háskólakeppnin í forritun 2017', '22. september, 2017')
+
+                            div(style="float:right;text-align:center;max-width:250px;padding-left:10px;margin-top:-25px;")
+                                div(style="margin-bottom:10px;")
+                                    img(src="Icpc_logo.png")
+                                div
+                                    img(src="HR_logo_hringur_lowres.jpg")
+
+                            p.
+                                Háskólakeppnin í forritun 2017 verður haldin í
+                                Háskólanum í Reykjavík þann 7. október kl. 9:00
+                                - 14:00, í stofu M110. Boðið verður upp á
+                                pizzur í hádeginu. Hvert lið samanstendur af
+                                allt að þremur einstaklingum, en leiðbeiningar
+                                um skráningu er að finna #[a(href="https://ncpc.idi.ntnu.no/ncpc2017/reg.html") hér].
+                                Skráning lokar 5. október kl. 16:00. Keppnin er
+                                skipulögð í samstarfi við #[a(href="https://www.ru.is") Háskólann í Reykjavík],
+                                og er haldin samhliða #[a(href="https://ncpc.idi.ntnu.no/ncpc2017/") Norðurlandakeppninni í forritun].
+
+                            p.
+                                Við hvetjum alla sem hafa áhuga á forritun,
+                                stærðfræði og/eða verkefnalausnum að taka þátt.
+                                Keppnin er hugsuð fyrir byrjendur jafnt sem
+                                lengra komna, og er aðal málið að hafa gaman
+                                af. Einnig má hafa í huga að því fleiri sem
+                                taka þátt í þessari keppni, því fleiri sæti fær
+                                Norðvestur-Evrópa í Heimskeppninni í forritun,
+                                sem stóreykur líkur Íslands á að komast alla
+                                leið!
+
+                            h4 Hverjir mega taka þátt?
+                            p.
+                                Keppnin er sérstaklega ætluð háskólanemum, sér
+                                í lagi nemendum úr Háskólanum í Reykjavík og
+                                Háskóla Íslands, en nemendur úr framhaldsskólum
+                                eru líka velkomnir. Þeir sem falla ekki undir
+                                þessa hópa, en langar að taka þátt, er boðið að
+                                #[a(href="mailto:keppnisforritun@gmail.com") hafa samband].
+
+                            h4 Hvernig fer keppnin fram?
+                            p.
+                                Hvert lið má aðeins nota eina tölvu á meðan
+                                keppninni stendur, og þarf liðið að koma með
+                                sína eigin tölvu. Liðið fær svo um 10 verkefni,
+                                og hefur 5 klukkustundir til að leysa eins mörg
+                                af þeim og það getur. Lið leysir verkefni með
+                                því að útfæra forrit sem framkvæmir það sem
+                                beðið er um í verkefnalýsingu, og skilar
+                                kóðanum á yfirferðarþjóninn Kattis. Upplýsingar
+                                um hvaða forritunarmál Kattis styður, og
+                                leiðbeiningar um hvernig á að skila kóða inn á
+                                Kattis, má finna #[a(href="https://open.kattis.com/help") hér].
+
+                            h4 Hvernig verkefni eru þetta?
+                            p.
+                                Verkefnin eru miserfið, af mismunandi toga, og
+                                reyna meðal annars á kunnáttu á forritun,
+                                reikniritum og stærðfræði, og beitingu á
+                                rökhugsun. Hægt er að skoða dæmi frá gömlum
+                                keppnum #[a(href="https://open.kattis.com/search?q=nordic+collegiate") hér].
+
+                            h4 Hvernig get ég æft mig?
+                            p.
+                                Haldin verður æfingakeppni 1. október kl. 9:00
+                                - 14:00, í stofu M201 í Háskólanum í Reykjavík.
+                                Boðið verður upp á pizzur í hádeginu. Þar
+                                verður farið yfir grunnatriði tengd
+                                forritunarkeppnum, og geta keppendur beðið um
+                                aðstoð á meðan æfingakeppninni stendur. Þetta
+                                verður líka tilvalinn staður til að mæta á ef
+                                einstaklingar eru í leit að liðsfélögum.
+
+                            p.
+                                Einnig er hægt að finna ógrynni af verkefnum
+                                til að æfa sig á á #[a(href="https://open.kattis.com") Open Kattis],
+                                en þar má einmitt finna dæmi úr #[a(href="https://open.kattis.com/search?q=nordic+collegiate") Norðurlandakeppninni í forritun síðan 2005].
+
+                        +article('Ísland á Baltnesku Ólympíuleikunum í forritun', '23. apríl, 2017')
+                            p.
+                                Þeir Atli Fannar Franklín og Bernhard Linn
+                                Hilmarsson hafa verið valdir til þess að taka
+                                þátt fyrir hönd Íslands á #[a(href="http://www.boi2017.org/") Baltnesku Ólympíuleikunum í forritun] (BOI), sem verða
+                                haldnir 25. - 30. apríl í Björgvin, Noregi.
+                                Atli er nemandi í Menntaskólanum á Akureyri en
+                                Bernhard er nemandi í Tækniskólanum. Þeir
+                                kepptu báðir í #[a(href="http://forritun.is") Forritunarkeppni framhaldsskólanna] og
+                                #[a(href="http://nordic.progolymp.se/") Norrænu Ólympíuleikunum í forritun] með góðum
+                                árangri. Þar að auki hafa þeir sýnt mikinn
+                                dugnað og áhuga á æfingum hingað til.
+
+                            +image('Atli og Bernhard á æfingu', 'boi2017/20170424_170806_cropped.jpg')
+
+                            p.
+                                Þetta er í fyrsta skipti sem Ísland tekur þátt
+                                á BOI og er þetta hugsað sem undirbúningur
+                                fyrir Alþjóðlegu Ólympíuleikana í forritun, en
+                                þeir verða haldnir í Teheran, Íran í sumar.
+
+                            p.
+                                Við óskum þeim velgengni í keppninni á sama
+                                tíma og við þökkum Íslenskri erfðagreiningu
+                                fyrir styrkinn sem gerir okkur kleift að senda
+                                þá út.
+
+                            h4 Dagur 1 - Koma
+                            p.
+                                Drengirnir eru komnir út til Noregs. Á morgun,
+                                26. apríl, verður haldin undirbúningskeppni,
+                                þar sem keppendur fá að kynnast umhverfinu sem
+                                verður notað í alvöru keppnunum tveimur.
+                                Keppnin hefst kl. 8:00 að íslenskum tíma, og
+                                verður hægt að fylgjast með henni á #[a(href="https://boi17-public.kattis.com/") boi17-public.kattis.com].
+                                Eins og sjá má á stigatöflunni eru 56 keppendur
+                                frá Danmörku, Eistlandi, Finnlandi, Þýskalandi,
+                                Íslandi, Lettlandi, Litháen, Noregi, Póllandi
+                                og Svíþjóð.
+
+                            h4 Dagur 2 - Undirbúningur
+                            p.
+                                Í morgun var undirbúningskeppnin haldin. Það
+                                voru þrjú dæmi, og má nálgast þau á íslensku #[a(href="boi2017/boi2017_warmup_is.pdf") hér].
+                                Örfáir keppendur leystu öll þrjú dæmin, og um
+                                helmingur leysti tvö eða fleiri dæmi. Okkar
+                                menn náðu hvor um sig að leysa eitt dæmi. Þá má
+                                nefna að Bernhard var með fyrstu mönnum að
+                                leysa fyrsta dæmið. Báðir töldu þeir sig eiga
+                                meira inni, en á morgun mun fyrsta alvöru
+                                keppnin (af tveimur) verða haldin. Eins og
+                                undirbúningskeppnin byrjar hún kl. 8:00 að
+                                íslenskum tíma, og verður hægt að fylgjast með
+                                henni á #[a(href="https://boi17-public.kattis.com/") boi17-public.kattis.com].
+
+                            h4 Dagur 3 - Fyrri keppnin
+                            p.
+                                Í morgun var fyrsta alvöru keppnin haldin. Það
+                                voru þrjú dæmi, og má nálgast þau á íslensku #[a(href="boi2017/boi2017_day1_is.pdf") hér].
+                                Bernhard byrjaði mjög vel, og þegar tæplega
+                                hálftími var liðinn af keppninni var hann
+                                hvorki meira né minna en í 1. sæti. Hann dróst
+                                þó rólega aftur úr, en var fyrstu þrjá og hálfa
+                                tímana af keppninni í medalíusæti (efstu ~5 fá
+                                gull, næstu ~10 fá silfur, og svo næstu ~14 fá
+                                brons). Þegar hálftími var eftir var hann
+                                tveimur sætum frá bronsi, en endaði svo í 34.
+                                sæti með 87 stig. Atli átti aðeins erfiðara með
+                                að halda í við skarann, og endaði í 44. sæti
+                                með 23 stig.
+
+                            +image('Staðan hjá okkar mönnum í fyrri keppninni', "boi2017/day1-standings.png")
+
+                            p.
+                                Frá hinum löndunum má nefna að Pólland var með
+                                sterka yfirburði, en fimm af sex keppendum frá
+                                Póllandi leystu öll dæmin upp á 100 stig.
+                                Aðeins einn annar keppandi fékk 100 stig í
+                                öllum dæmunum, en það var einn af vinum okkar
+                                frá Svíþjóð.
+
+                            +image('Sól, blíða, 20. stiga hiti og fallegt útsýni þar sem strákarnir eru, í Björgvin', 'boi2017/IMAG0076.jpg')
+
+                            p.
+                                Okkar menn fá þó annan séns til að komast í
+                                medalíusæti, en seinni keppnin er á morgun.
+                                Eins og hinar keppnirnar byrjar hún kl. 8:00 að
+                                íslenskum tíma, og verður hægt að fylgjast með
+                                henni á #[a(href="https://boi17-public.kattis.com/") boi17-public.kattis.com].
+
+                            +image('Farið var yfir lausnir á dæmum eftir keppnina', 'boi2017/IMAG0071.jpg')(style='width:50%;')
+
+
+                            h4 Dagur 4 - Seinni keppnin
+                            p.
+                                Í morgun var seinni keppnin haldin. Eins og
+                                venjulega voru þrjú dæmi, og má nálgast þau á
+                                íslensku #[a(href="boi2017/boi2017_day2_is.pdf") hér].
+                                Dagurinn í dag virtist vera mun þyngri en
+                                dagurinn í gær, og á það sérstaklega við hjá
+                                okkar mönnum. Bernhard nældi sér í örfá stig í
+                                tveimur dæmanna, og endaði með 110 stig í 38.
+                                sæti, 80 stigum eða 10 sætum frá bronsmedalíu.
+                                Atli náði engum stigum í dag, og endar því með
+                                23 stigin sem hann hafði náð í fyrri keppninni,
+                                og hafnar þar með í 49. sæti.
+
+                            +image('Lokastaðan hjá okkar mönnum', 'boi2017/day2-standings.png')
+
+                            p.
+                                Pólverjarnir voru ekki með eins mikla yfirburði
+                                í dag, en enduðu engu að síður með þrjár
+                                gullmedalíur. Ein gullmedalía fór svo til
+                                Lettlands, en önnur gullmedalía ásamt fyrsta
+                                sæti yfir allt fór svo til vina okkar í
+                                Svíþjóð, nefnilega hans David Wärn. Við óskum
+                                þeim öllum innilega til hamingju!
+
+                            p.
+                                Þetta markar lok Baltnesku Ólympíuleikanna í
+                                forritun 2017 í Björgvin, Noregi, og vonum við
+                                að þetta hafi verið góð æfing fyrir strákana.
+                                Næst verður stefnan sett á Alþjóðlegu
+                                Ólympíuleikana í forritun, en þeir verða
+                                haldnir í Teheran, Íran í lok sumars 2017. Þar
+                                mun Bernhard Linn Hilmarsson taka þátt fyrir
+                                hönd Íslands.
+
+                        +article('Stofnfundur haldinn', '25. mars, 2017')
+                            p
+                                | Stofnfundur félagsins var haldinn í dag, 25.
+                                | mars 2017, í Háskólanum í Reykjavík. Lög voru
+                                | samin og eftirfarandi stjórn kosin:
+
+                                ul
+                                    li Bjarki Ágúst Guðmundsson, formaður
+                                    li Arnar Bjarni Arnarson, meðstjórnandi
+                                    li Unnar Freyr Erlendsson, meðstjórnandi
+                                    li Garðar Andri Sigurðsson, varamaður
+                                    li Hannes Kristján Hannesson, varamaður
+                                    li Hjalti Magnússon, varamaður
+
+                                +image('Frá vinstri: Hannes, Arnar, Unnar, Bjarki, Garðar, Hjalti', 'stofnfundur.jpg')
+
+                    .tabs-panel#register
+                        h3 Félagsaðild
+                        p.
+                            Keppnisforritunarfélag Íslands er opið félag, og
+                            getur hver sem er orðið meðlimur. Beiðni um
+                            inngöngu í félagið skal vera send til #[a(href="mailto:keppnisforritun@gmail.com") stjórnar]
+                            félagsins, og skal innihalda fullt nafn, kennitölu og
+                            netfang umsækjanda.
+
+                        p.
+                            Ekkert kostar í félagið að svo stöddu, en verða
+                            félagsgjöld eitt þeirra mála sem verða skoðuð á
+                            næsta aðalfundi.
+
+                    .tabs-panel#chat
+                        h3 Samskiptavettvangar
+                        p.
+                            Félagið heldur utan um samskiptavettvanga fyrir
+                            íslenska keppnisforritara. Þeir eru opnir, og þarf
+                            ekki að vera meðlimur í félaginu til að geta tekið
+                            þátt í umræðum.
+
+                        ul
+                            li #[b Discord]: Hægt að skrá sig #[a(href="https://discord.gg/Umz2pJz") hér].
+                            li #[b Facebook]: Hópurinn #[a(href="https://www.facebook.com/groups/901241436655594/") Keppnisforritun á Íslandi].
+
+                    .tabs-panel#about
+                        h3 Stjórn
+                        p Formaður félagsins er
+                            ul
+                                li Bjarki Ágúst Guðmundsson
+
+                        p Meðstjórnendur félagsins eru
+                            ul
+                                li Arnar Bjarni Arnarson
+                                li Unnar Freyr Erlendsson
+
+                        p Varamenn félagsins eru
+                            ul
+                                li Garðar Andri Sigurðsson
+                                li Hannes Kristján Hannesson
+                                li Hjalti Magnússon
+
+                        h3 Lög
+
+                        h5 1. grein
+                        p Félagið heitir Keppnisforritunarfélag Íslands.
+
+                        h5 2. grein
+                        p Tilgangur félagsins er:
+                            ol
+                                li Kynna keppnisforritun og rækta samfélag keppnisforritara á Íslandi.
+                                li Efla samskipti keppnisforritara á Íslandi.
+                                li Halda utan um þátttöku Íslands á Ólympíuleikunum í forritun (#[i International Olympiad in Informatics]).
+
+                        h5 3. grein
+                        p Tilgangi sínum hyggst félagið ná með því að
+                            ol
+                                li halda reglulega viðburði tengda keppnisforritun,
+                                li halda úti vefsíðu um starf félagsins og keppnisforritun almennt,
+                                li halda úti samskiptavettvangi fyrir keppnisforritara á Íslandi og
+                                li sjá um val á liði fyrir Ólympíuleikana í forritun.
+
+                        h5 4. grein
+                        p.
+                            Hver sem er getur skráð sig í félagið. Beiðni um
+                            inngöngu í félagið skal vera send til stjórnar
+                            félagsins, og skal innihalda fullt nafn, kennitölu og
+                            netfang umsækjanda. Umsækjandi gerist félagsmaður þegar
+                            stjórn hefur samþykkt umsóknina og félagsgjald
+                            yfirstandandi starfstímabils hefur verið greitt.
+
+                        h5 5. grein
+                        p.
+                            Starfstímabil félagsins er 1. september til 31.
+                            ágúst. Á aðalfundi skal stjórn gera upp árangur
+                            liðins starfstímabils. Aðeins félagsmenn mega vera
+                            þátttakendur í aðalfundi.
+
+                        h5 6. grein
+                        p
+                            | Aðalfund skal halda eigi síðar en 1. nóvember ár
+                            | hvert og skal boða til hans með að minnst tveggja
+                            | vikna fyrirvara með sannanlegum hætti. Aðalfundur
+                            | er löglegur, sé rétt til hans boðað. Einfaldur
+                            | meirihluti mættra félagsmanna ræður úrslitum
+                            | mála. Dagskrá aðalfundar skal vera sem hér segir:
+
+                            ol
+                                li Kosning fundarstjóra og fundarritara.
+                                li Skýrsla stjórnar flutt.
+                                li Endurskoðaðir reikningar lagðir fram til afgreiðslu.
+                                li Lagabreytingar ef við á.
+                                li Kosning stjórnarmanna.
+                                li Kosning skoðunarmanns reikninga.
+                                li Ákvörðun félagsgjalds.
+                                li Kosning liðsstjóra og varaliðsstjóra Ólympíuliðs Íslands í forritun.
+                                li Önnur mál.
+
+                        h5 7. grein
+                        p.
+                            Stjórn félagsins skal skipuð formanni og 2
+                            meðstjórnendum, kjörnum á aðalfundi til eins árs í
+                            senn. Einnig er heimilt að kjósa allt að 3
+                            varamenn. Stjórnarmeðlimir mega ekki vera
+                            gjaldgengir keppendur í #[i International Olympiad in Informatics].
+                            Stjórnin skiptir með sér verkum.
+                            Stjórn félagsins fer með málefni félagsins milli
+                            aðalfunda. Formaður boðar til funda. Firmaritun er
+                            í höndum meirihluta stjórnar.
+
+                        h5 8. grein
+                        p.
+                            Stjórn getur boðað til aukaaðalfundar ef þörf er á.
+                            Óski 5 félagsmenn, eða einfaldur meirihluti
+                            félagsmanna, þess skriflega, er stjórn skylt að kalla
+                            saman aukaaðalfund. Aukaaðalfund skal boða á sama hátt
+                            og aðalfund.
+
+                        h5 9. grein
+                        p.
+                            Ákvörðun um félagsgjald skal tekin á aðalfundi.
+                            Félagsgjöld skulu innheimt árlega.
+
+                        h5 10. grein
+                        p.
+                            Reikningsár félagsins er sama og starfstímabil
+                            félagsins. Rekstrarafgangur félagsins við
+                            ársuppgjör skal renna í félagið sjálft.
+
+                        h5 11. grein
+                        p.
+                            Ákvörðun um slit félagsins skal taka á aðalfundi með
+                            einföldum meirihluta atkvæða og renna eignir þess til
+                            Íslenska stærðfræðafélagsins.
+
+                        h5 12. grein
+                        p.
+                            Félagið skal sjá um að kjósa liðsstjóra og
+                            varaliðsstjóra fyrir Ólympíulið Íslands í forritun
+                            hvers árs, og skal það gert á aðalfundi. Liðsstjóri
+                            og varaliðsstjóri þurfa að uppfylla þau skilyrði
+                            sem #[i International Olympiad in Informatics]
+                            setur svokölluðum „#[i team leader]“.
+
+                        p
+                            i.
+                                Lög þessi voru samþykkt á stofnfundi
+                                Keppnisforritunarfélags Íslands 25. mars 2017.
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/what-input/4.1.1/what-input.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/js/foundation.min.js")
+    script.
+        $(document).foundation();
+
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-98098323-1', 'auto');
+        ga('send', 'pageview');
+
+</html>
