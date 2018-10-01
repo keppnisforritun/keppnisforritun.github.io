@@ -7,7 +7,7 @@ mixin article(title, date)
 mixin image(title, src)
     .callout.text-center
         a(href=src)
-            img(style="margin-bottom: 10px;" + attributes.style src=src)
+            img(style="margin-bottom: 10px;" + (attributes.style ? attributes.style : "") src=src)
         h6.text-center= title
 
 doctype html
