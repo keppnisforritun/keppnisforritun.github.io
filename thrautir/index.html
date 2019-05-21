@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Að leysa þrautir með forritun</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.min.css" rel="stylesheet" />
+        <style type="text/css">
+            main {
+                max-width: 85ch;
+                padding: 2ch;
+                margin: auto;
+            }
+
+            .accordion {
+                background-color: #eee;
+                color: #444;
+                cursor: pointer;
+                padding: 18px;
+                width: 100%;
+                text-align: left;
+                border: none;
+                outline: none;
+                transition: 0.4s;
+            }
+
+            .active, .accordion:hover {
+                background-color: #ccc;
+            }
+
+            .accordion:after {
+                content: '+';
+                color: #777;
+                font-weight: bold;
+                float: right;
+                margin-left: 5px;
+            }
+
+            .panel {
+                background-color: white;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+            }
+
+            pre[class*=language-] {
+                margin: 0; !important
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <h1>Að leysa þrautir með forritun</h1>
+            <p>
+                Með því að forrita tölvur er hægt að láta þær leysa fyrir okkur
+                flóknar þrautir, á broti af tímanum sem það tekur okkur. Hér fyrir
+                neðan eru nokkur dæmi um svona þrautir, ásamt forritum sem leysa
+                þær. Þessi forrit eru skrifuð í forritunarmálinu Python, og þarf að
+                setja upp forritunarmálið í tölvunni svo að tölvan geti keyrt
+                forritin.
+            </p>
+
+            <h2>Forritunarmálið Python</h2>
+            <p>
+                Forritunarmálið Python er í grunninn mjög einfalt, og hentar því
+                vel sem fyrsta forritunarmál. Á sama tíma getur það verið mjög
+                kröftugt, og er mikið notað í bæði atvinnu og akademíu.
+            </p>
+            <p>
+                Hægt er að ná í Python með því að fylgja leiðbeiningunum <a
+                    href="https://wiki.python.org/moin/BeginnersGuide/Download">hér</a>.
+                Lausnirnar fyrir neðan notast við útgáfu 3 af Python.
+            </p>
+
+            <h2>Orðalisti</h2>
+            <p>
+                Sumar af lausnunum styðjast við lista af íslenskum orðum.
+                Þennan lista er hægt að nálgast <a
+                    href="https://raw.githubusercontent.com/mideind/Netskrafl/master/resources/ordalisti.algeng.sorted.txt">hér</a>
+                (vinstri smella og velja &quot;Save link as...&quot;).
+                Orðalistinn heitir <tt>ordalisti.algeng.sorted.txt</tt> og
+                þarf að vera staðsettur á sama stað lausnirnar svo þær geti
+                lesið hann.
+            </p>
+
+            <hr />
+            <h2>Þraut 1 - Orðafjöldi</h2>
+            <p>
+                Við viljum komast að því hvað eru mörg orð í orðalistanum
+                okkar. Skrifið forrit sem les orðalistann línu fyrir línu,
+                hækkar teljara í hvert skipti, og skrifar að lokum út gildi
+                teljarans, sem semsvarar þá hversu margar línur og orð voru
+                lesin.
+            </p>
+
+            <button class="accordion">Lausn (Python)</button>
+            <div class="panel">
+            <pre><code class="language-python">ordalisti = &#x27;ordalisti.algeng.sorted.txt&#x27;
+
+fjoldi_orda = 0
+with open(ordalisti, &#x27;r&#x27;) as skra:
+for lina in skra.read().splitlines():
+    fjoldi_orda = fjoldi_orda + 1
+
+print(fjoldi_orda)</code></pre>
+
+            </div>
+
+            <hr />
+            <h2>Þraut 2 - Samhverfur</h2>
+            <p>
+                Samhverfa er orð sem er alveg eins, hvort sem það er lesið
+                áfram eða afturábak. Til dæmis eru &quot;amma&quot; og
+                &quot;rassar&quot; orð sem eru samhverfur. Skrifið forrit sem
+                finnur öll orð í orðalistanum okkar sem eru samhverfur.
+            </p>
+            <p>
+                (Til gamans: listi af samhverfum á <a href="https://www.baggalutur.is/samhverfur.php">Baggalútur</a>)
+            </p>
+
+            <button class="accordion">Lausn (Python)</button>
+            <div class="panel">
+            <pre><code class="language-python">def ord_ofugt(ord):
+    return ord[::-1]
+
+def samhverfa(ord):
+    return ord == ord_ofugt(ord)
+
+ordalisti = &#x27;ordalisti.algeng.sorted.txt&#x27;
+
+with open(ordalisti, &#x27;r&#x27;) as skra:
+    for lina in skra.read().splitlines():
+        if samhverfa(lina):
+            print(lina)</code></pre>
+            </div>
+
+            <hr />
+            <h2>Þraut 3 - Hengimaður</h2>
+            <p>
+                Við erum að spila hengimann. Orðið sem við erum að giska á lítur núna út svona:
+                <center><b><tt>
+                    _ k _ á v _ r _ _
+                </tt></b></center><br/>
+                <!--
+                <center><b>
+                    _ _ _ _ _ _ h _ _ _ _ h _ _ _
+                </b></center><br/>
+                -->
+                Skrifið forrit sem notar orðalistann okkar til að finna hvaða orð koma til greina.
+            </p>
+
+            <button class="accordion">Lausn (Python)</button>
+            <div class="panel">
+            <pre><code class="language-python">def passar(mynstur, ord):
+    if len(mynstur) != len(ord):
+        return False
+
+    for i in range(len(mynstur)):
+        if mynstur[i] != &#x27;_&#x27;:
+            if mynstur[i] != ord[i]:
+                return False
+
+    return True
+
+ordalisti = &#x27;ordalisti.algeng.sorted.txt&#x27;
+mynstur = &#x27;_k_áv_r__&#x27;
+
+with open(ordalisti, &#x27;r&#x27;) as skra:
+    for lina in skra.read().splitlines():
+        if passar(mynstur, lina):
+            print(lina)</code></pre>
+            </div>
+
+            <hr />
+            <h2>Þraut 4 - Stafarugl</h2>
+            <p>
+                Við erum að leita að orði. Það er búið að rugla röðinni á stöfunum í orðinu, og núna lítur það svona út:
+                <center><b><tt>
+                    gaulrind
+                </tt></b></center><br/>
+                Skrifið forrit sem notar orðalistann okkar til að finna hvaða orð koma til greina.
+            </p>
+
+            <button class="accordion">Lausn (Python)</button>
+            <div class="panel">
+            <pre><code class="language-python">def passar(rugl, ord):
+    return sorted(rugl) == sorted(ord)
+
+ordalisti = &#x27;ordalisti.algeng.sorted.txt&#x27;
+rugl = &#x27;gaulrind&#x27;
+
+with open(ordalisti, &#x27;r&#x27;) as skra:
+    for lina in skra.read().splitlines():
+        if passar(rugl, lina):
+            print(lina)</code></pre>
+            </div>
+
+            <hr />
+            <h2>Þraut 5 - Skrafl</h2>
+            <p>
+                Við erum að spila Skrafl. Við höfum eftirfarandi stafi í borðinu hjá okkur:
+                <center><b><tt>
+                    t v o r f a l u n ö
+                </tt></b></center><br/>
+                Skrifið forrit sem notar orðalistann okkar til að finna hvað er
+                lengsta orðið sem við getum myndað með þessum stöfum.
+            </p>
+
+            <button class="accordion">Lausn (Python)</button>
+            <div class="panel">
+            <pre><code class="language-python">from collections import Counter
+
+def passar(stafir, ord):
+    stafir_fjoldi = Counter(stafir)
+    ord_fjoldi = Counter(ord)
+
+    for (stafur, fjoldi) in ord_fjoldi.items():
+        if fjoldi &gt; stafir_fjoldi[stafur]:
+            return False
+
+    return True
+
+ordalisti = &#x27;ordalisti.algeng.sorted.txt&#x27;
+rugl = &#x27;tvorfalunö&#x27;
+
+with open(ordalisti, &#x27;r&#x27;) as skra:
+    for lina in skra.read().splitlines():
+        if passar(rugl, lina):
+            print(lina)</code></pre>
+            </div>
+
+            <hr />
+            <h2>Þraut 6 - Orðaleit</h2>
+            <p>
+                Við erum að spila Orðaleit. Leikborðið lítur svona út:
+                <center><b><tt>
+mnvhríeljunarnrr<br/>
+uófensvavtklætéi<br/>
+npaiglsnöeðgrttt<br/>
+uarmaagöllðstksk<br/>
+jlaanarbnuianiak<br/>
+kahkaflsbgrýhnky<br/>
+ibiosænrpfevaniþ<br/>
+eaúmnudnroýlnaru<br/>
+lmánfraæðttmspip<br/>
+gpnarnðluentrkfy<br/>
+naarairðtnglakie<br/>
+ölrnnguaerdtsrrt<br/>
+slbglnfngsaóaurs<br/>
+aaaaaaounnrmamýk<br/>
+rrverrukibatilff<br/>
+frðiðostöjksnáaa
+                </tt></b></center><br/>
+                Leikurinn snýst um að finna orð í leikborðinu, hvort sem þau
+                eru lárétt, lóðrétt eða á ská, afturábak eða áfram. Skrifið forrit sem notar
+                orðalistann okkar til að finna lengsta orðið sem má
+                finna á leikborðinu.
+            </p>
+
+            <button class="accordion">Lausn (Python)</button>
+            <div class="panel">
+            <pre><code class="language-python">ordalisti = &#x27;ordalisti.algeng.sorted.txt&#x27;
+ordabok = set()
+
+with open(ordalisti, &#x27;r&#x27;) as skra:
+    for lina in skra.read().splitlines():
+        ordabok.add(lina)
+
+bord = &#x27;&#x27;&#x27;
+mnvhríeljunarnrr
+uófensvavtklætéi
+npaiglsnöeðgrttt
+uarmaagöllðstksk
+jlaanarbnuianiak
+kahkaflsbgrýhnky
+ibiosænrpfevaniþ
+eaúmnudnroýlnaru
+lmánfraæðttmspip
+gpnarnðluentrkfy
+naarairðtnglakie
+ölrnnguaerdtsrrt
+slbglnfngsaóaurs
+aaaaaaounnrmamýk
+rrverrukibatilff
+frðiðostöjksnáaa
+&#x27;&#x27;&#x27;
+
+bord = bord.strip().splitlines()
+N = len(bord)
+M = len(bord[0])
+
+for x in range(N):
+    for y in range(M):
+        for dx in range(-1,2):
+            for dy in range(-1,2):
+                if dx == 0 and dy == 0:
+                    continue
+
+                cx = x
+                cy = y
+                ord = &#x27;&#x27;
+                while 0 &lt;= cx &lt; N and 0 &lt;= cy &lt; M:
+                    ord += bord[cx][cy]
+                    if ord in ordabok and len(ord) &gt; 5:
+                        print(ord, x, y, dx, dy)
+                    cx += dx
+                    cy += dy</code></pre>
+            </div>
+        </main>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/prism-python.min.js"></script>
+        <script type="text/javascript">
+            var acc = document.getElementsByClassName("accordion");
+            for (var i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + 'px';
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>
+
